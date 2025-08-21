@@ -33,7 +33,7 @@ class Client
                     Console.WriteLine($"\n{serverMessage}");
                 }
             });
-            
+
             while (true)
             {
                 Console.Write("> ");
