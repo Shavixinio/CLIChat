@@ -1,8 +1,5 @@
 using System.Diagnostics;
-using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
 
 class Client
 {
@@ -52,7 +49,7 @@ class Client
             Console.Write("Failed to connect to the server: {0}", ex);
         }
     }
-    // TODO: Implement 
+    // TODO: Implement
     public async Task<long> PingServer(NetworkStream stream)
     {
         byte[] buffer = new byte[64];
