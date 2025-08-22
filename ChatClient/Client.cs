@@ -12,7 +12,9 @@ class Client
         try
         {
             Console.Write("Enter your username: ");
-            string username = Console.ReadLine() ?? "User";
+            string username = Console.ReadLine() ?? string.Empty;
+            if (username == string.Empty)
+                username = "User";
 
             using TcpClient client = new TcpClient("127.0.0.1", port);
             Console.WriteLine("Connected to the server");
@@ -30,14 +32,14 @@ class Client
                         Console.WriteLine("Server disconnected");
                         break;
                     }
-                    Console.WriteLine($"\n{serverMessage}");
+                    Console.WriteLine(serverMessage);
                 }
             });
 
             while (true)
             {
-                Console.Write("> ");
                 string message = Console.ReadLine() ?? string.Empty;
+                if (message != string.Empty)
                 await MessageUtils.SendMessageAsync(stream, message);
             }
         }
@@ -50,6 +52,7 @@ class Client
             Console.Write("Failed to connect to the server: {0}", ex);
         }
     }
+    // TODO: Implement 
     public async Task<long> PingServer(NetworkStream stream)
     {
         byte[] buffer = new byte[64];
