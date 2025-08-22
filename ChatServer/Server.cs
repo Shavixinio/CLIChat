@@ -58,6 +58,8 @@ class Server
                 foreach (var kvp in clients)
                 {
                     var otherClient = kvp.Value;
+                    if (otherClient.Username == clientInfo.Username)
+                        continue;
                     try
                     {
                         NetworkStream otherStream = otherClient.Client.GetStream();
