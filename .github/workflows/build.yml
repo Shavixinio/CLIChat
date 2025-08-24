@@ -22,8 +22,14 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore CLIChat.sln
 
-    - name: Build solution
-      run: dotnet build CLIChat.sln --configuration Release --no-restore
+    - name: Build ChatServer solution
+      run: dotnet build ChatServer --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test CLIChat.sln --no-build --verbosity normal
+      run: dotnet test ChatServer --no-build --verbosity normal
+
+    - name: Build ChatClient solution
+      run: dotnet build ChatClient --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test ChatClient --no-build --verbosity normal
