@@ -20,7 +20,9 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore CLIChat.sln
+      run: |
+       dotnet restore ChatServer
+       dotnet restore ChatClient
 
     - name: Build ChatServer solution
       run: dotnet build ChatServer --configuration Release --no-restore
