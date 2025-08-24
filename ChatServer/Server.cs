@@ -19,8 +19,6 @@ class Server
             while (true)
             {
                 var client = await server.AcceptTcpClientAsync();
-                Console.WriteLine("A client has connected to the server");
-
                 HandleClientAsync(client);
             }
         }
